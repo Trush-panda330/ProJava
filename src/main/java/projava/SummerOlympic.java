@@ -6,7 +6,9 @@ public class SummerOlympic {
     public void main(String[] args) {
         new Olympic().isSummerOlympicYear();
     }
-    public class Olympic()
+    public class Olympic {
+
+    }
 
     /**
      *
