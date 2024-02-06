@@ -8,6 +8,8 @@ public class SummerOlympic {
     }
     public class Olympic {
 
+        public void isSummerOlympicYear() {
+        }
     }
 
     /**
