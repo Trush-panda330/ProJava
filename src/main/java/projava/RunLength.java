@@ -4,7 +4,6 @@ public class RunLength {
     public static void main(String[] args) {
         final var COUNTER_BASE = -1;
         var data = "abbcccbaaaabccccccccccccddd";
-
         var count = COUNTER_BASE;
         char prev = 0;
         var builder  = new StringBuilder();
@@ -13,8 +12,8 @@ public class RunLength {
                 count++;
                 if (count == 9) {
                     builder.append('9');
+                    builder.append(ch);
                     count = COUNTER_BASE;
-                    prev = 0;
                 }
             } else {
                 //違う文字が来たとき
@@ -23,8 +22,9 @@ public class RunLength {
                     builder.append((char)('0' + count));
                 }
                 builder.append(ch);
-                prev = ch;
+                count = 0;  // reset count for the new character
             }
+            prev = ch;
         }
         //最後の文字が連続していれば数字を出力
         if (count >= 0) {
