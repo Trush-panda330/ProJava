@@ -6,14 +6,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SimpleServer {
-    public static void main(String[] args) throws IOException {
-        var server = new ServerSocket(1700);
-        System.out.println("Waiting...");
-        try (Socket soc = server.accept();
-            InputStream input = soc.getInputStream())
-            {
-            System.out.println("connect from " + soc.getInetAddress());
-            System.out.println(input.read());
+    public static void main(String[] args) {
+        try (ServerSocket server = new ServerSocket(1700)) {
+            System.out.println("Waiting...");
+            try (Socket soc = server.accept()) {
+                System.out.println("Connected from " + soc.getInetAddress());
+
+                InputStream input = soc.getInputStream();
+                int data = input.read();
+                if (data != -1) {
+                    System.out.println("Received data: " + data);
+                } else {
+                    System.out.println("No data received.");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
