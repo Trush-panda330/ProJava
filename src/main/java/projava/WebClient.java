@@ -11,7 +11,7 @@ public class WebClient {
         var domain = "example.com"; // 接続先のドメインを指定
         SocketFactory factory = SSLSocketFactory.getDefault();
         // try-with-resourcesを使用して、Socket、PrintWriter、InputStreamReader、BufferedReaderを自動的にクローズする
-        try (Socket soc = factory.createSocket(domain, 80); // ソケットを作成し、指定したドメインのポート443（HTTPS）に接続
+        try (Socket soc = factory.createSocket(domain, 80); // ソケットを作成し、指定したドメインのポート80（HTTPS）に接続
              var pw = new PrintWriter(soc.getOutputStream()); // ソケットの出力ストリームを使ってPrintWriterを作成
             // ソケットの入力ストリームを使ってInputStreamReaderを作成
              var bur = new BufferedReader(new InputStreamReader(soc.getInputStream()))) { // InputStreamReaderを使ってBufferedReaderを作成
